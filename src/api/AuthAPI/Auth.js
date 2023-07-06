@@ -1,7 +1,7 @@
 const { HTTP } = require("../HTTPs");
 
 class AuthApis {
-  getLogin(requestLogin) {
+  getData(requestLogin) {
     return new Promise((resolve, reject) => {
       HTTP.post(`/login/getlogin`, requestLogin)
         .then((response) => {
@@ -37,9 +37,11 @@ class AuthApis {
     });
   }
 
-  confirmAccount(code) {
+  getPhatTu() {
     return new Promise((resolve, reject) => {
-      HTTP.get(`/login/confirmemail?code=` + code)
+      HTTP.get(
+        `/api/version1.0/PhatTu?phapDanh=Thích&DaHoanTuc=1&pageSize=2&pageNumber=1`
+      )
         .then((response) => {
           resolve(response.data);
         })

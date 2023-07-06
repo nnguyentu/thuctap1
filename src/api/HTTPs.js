@@ -2,12 +2,17 @@ const axios = require("axios");
 
 class HTTPSingleton {
   static config = {
+    baseURL: "https://192.168.1.25:7029/",
+    // baseURL: "http://192.168.1.149:8080/",
     headers: {
       "Content-Type": "application/json",
       "Access-Control-Allow-Origin": "*",
     },
     timeout: 1000000,
   };
+
+  static instance;
+  HTTP;
 
   constructor() {
     this.HTTP = axios.create(HTTPSingleton.config);
@@ -27,4 +32,6 @@ class HTTPSingleton {
 
 const HTTP = HTTPSingleton.getInstance().getHTTP();
 
-module.exports = { HTTP, HTTPSingleton };
+module.exports = {
+  HTTP,
+};
